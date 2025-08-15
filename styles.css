@@ -1,0 +1,245 @@
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Variáveis de Design (Design Tokens) --- */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --danger-color: #e53935;
+    --danger-hover-color: #c62828;
+    --success-color: #272956;
+    
+    --background-gradient: linear-gradient(120deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --card-background: rgba(255, 255, 255, 0.1);
+    --card-border-color: rgba(255, 255, 255, 0.2);
+    --input-background: rgba(255, 255, 255, 0.15);
+    
+    --text-primary: #f0f0f0;
+    --text-secondary: #c0c0c0;
+    --icon-color: #a0a0a0;
+    
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+/* --- Reset e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background-gradient);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 30px 15px;
+    background-attachment: fixed;
+}
+
+/* --- Container Principal (Efeito Glassmorphism) --- */
+.container {
+    width: 100%;
+    max-width: 550px;
+    background: var(--card-background);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* --- Título --- */
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    letter-spacing: -0.5px;
+}
+
+/* --- Formulário e Inputs --- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--icon-color);
+    transition: color var(--transition-speed) ease;
+}
+
+input {
+    width: 100%;
+    padding: 14px 14px 14px 45px;
+    background: var(--input-background);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all var(--transition-speed) ease;
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--card-border-color);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.3);
+}
+
+input:focus + i {
+    color: var(--text-primary);
+}
+
+/* --- Botão Principal --- */
+button[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    background: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background: #384f8e;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Divisor --- */
+.divider {
+    height: 1px;
+    background: var(--card-border-color);
+    margin: 25px 0;
+}
+
+/* --- Lista de Contatos --- */
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    animation: slideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    transition: all var(--transition-speed) ease;
+}
+
+li:hover {
+    transform: scale(1.03);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-info strong {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.contact-info .detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.contact-info .detail i {
+    font-size: 0.8rem;
+}
+
+.actions button.remover {
+    background: none;
+    border: none;
+    color: var(--icon-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+}
+
+.actions button.remover:hover {
+    color: rgb(185, 136, 246);
+    background: var(--danger-color);
+}
+
+/* --- Estado Vazio --- */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+}
+
+/* --- Animações --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
